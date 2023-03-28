@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="infomation">
+        <form action="">
+          name:  <input type="text" id="ipName" value="">
+         email:  <input id="ipEmail" type="text" value="">
+                <button onclick="button()" id="btn">submit</button>
+        </form>
+    </div>
+    <script>
+        var btn = document.getElementById('btn');
+        var myname = document.getElementById('ipName');
+        var email = document.getElementById('ipEmail');
+
+        function button() {
+            alert(myname.value + '-' + email.value )   
+        }
+
+    </script>
   
     
 </body>
