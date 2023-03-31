@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form__information">
+        <form id="yourForm" action="">
+            <div class="form__name">
+                <label for="inputName">Name:</label>
+                <input onkeyup="validateName()" type="text" id="inputName" value="" placeholder="Mời bạn nhập tên">
+                <p id="showName"></p>
+            </div>
+            <div class="form__email">
+                <label for="inputEmail">Email:</label>
+                <input onkeyup="validateEmail()" type="text" id="inputEmail" value="" placeholder="Mời bạn nhập email">
+                <p id="showEmail"></p>
+            </div>
+            <button type="button" id="btn" onclick="submit()" disabled >Submit</button>
+        </form>
+    </div>
+
+    <script>
+
+        var btn_submit = document.getElementById('btn');
+        var ip_name = document.getElementById('inputName');
+        var ip_email = document.getElementById('inputEmail');
+
+        function validateName() {
+            var regEX =  /^[A-Za-z\s-, ]+$/;
+            let validateName = document.getElementById('showName')
+            if(ip_name.value.match(regEX) && ip_name.value != ''){
+                validateName.innerHTML = '';
+                btn_submit.removeAttribute('disabled');
+            }
+            else{
+                validateName.innerHTML = '* Vui lòng nhập ký tự chữ không dấu'
+                validateName.style.color = 'red';
+                validateName.style.fontSize ='12px';
+                btn_submit.setAttribute('disabled', '');
+            }
+        }
+
+        function validateEmail() {
+            var  regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/;
+            let validateEmail = document.getElementById('showEmail');
+            if(ip_email.value.match(regexEmail) && ip_email.value != ''){
+                validateEmail.innerHTML = '';
+                btn_submit.removeAttribute('disabled');
+            }
+            else{
+                validateEmail.innerHTML = '* Vui lòng nhập email hợp lệ'
+                validateEmail.style.color = 'red';
+                validateEmail.style.fontSize ='12px';
+                btn_submit.setAttribute('disabled', '');
+            }
+        }
+
+    </script>
+
+    <style>
+        .form__information{
+            width: 30%;
+            margin: auto;
+        }
+        .form__name{
+            margin-top: 50px;
+        }
+        .form__email{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        input{
+            outline: none;
+        }
+        button{
+            width: 80px;
+            height: 40px;
+            background-color: cornflowerblue;
+            outline: none;
+            border: none;
+
+        }
+    </style>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+</html>
